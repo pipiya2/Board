@@ -1,17 +1,19 @@
 package com.example.demo.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class CommonController {
 	@GetMapping("/")	
-	public String home() {
-		return "index";
+	public String home(Model model) {
+		model.addAttribute("mainContents","defaultContents");
+		return "/index";
 	}
 	
-	@GetMapping("/test")
-	public String test() {
-		return "test";
+	@GetMapping("/login")
+	public String loginPage() {
+		return "/index";
 	}
 }
