@@ -48,3 +48,12 @@
 	cursor: pointer;
 }
 
+.form-error-text{
+	font-size: 12px;
+   	font-weight: 400;
+}
+
+.findpw-form-error-email{
+	display : none;
+	color : red !important;
+}

@@ -75,6 +75,46 @@ $('#inputEmail').keyup(()=>{
 	}
 })
 
-$("#joinBtn").click(()=>{
+
+// 빈칸 유효성
+function isBlank(){
+	let name = $("#inputName").val().length == 0 ? true : false;
+	let birth = $("#inputBirth").val().length == 0 ? true : false;
+	let email = $("#inputEmail").val().length == 0 ? true : false;
+	let pw = $("#inputPassword").val().length == 0 ? true : false;
+	let pwCheck = $("#inputPasswordCheck").val().length == 0 ? true : false;
 	
+	// 포커싱은 최상단부터
+	if(name || birth || email || pw || pwCheck){
+		if(name) {$("#inputName").focus(); return true;}
+		if(birth) {$("#inputBirth").focus(); return true;}
+		if(email) {$("#inputEmail").focus(); return true;}
+		if(pw) {$("#inputPassword").focus(); return true;}
+		if(pwCheck) {$("#inputPasswordCheck").focus(); return true;}
+	}
+	return false;
+}
+
+$("#joinBtn").click(()=>{
+	if(!isBlank() && pwCheck && pwReCheck){
+		// send account info
+		let formData = $("#signUpForm").serialize();
+		$.ajax({
+			url : "/sign-up",
+			type : "post",
+			data : formData,
+			beforeSend : ()=>{
+				
+			},
+			success : result =>{
+				console.log(result);
+			},
+			error : e=>{
+				console.log(e);
+			},
+			complete : ()=>{
+				
+			}
+		})
+	}
 })
