@@ -1,0 +1,50 @@
+@charset "UTF-8";
+
+.sign-in-navbar{
+	width : 100%;
+	border-bottom: 0.1px solid #c0c0c0;
+}
+
+.sign-in-nav-wrap{
+	max-width : 1000px;
+	width : 100%;
+	margin : 0 auto;
+}
+
+.sign-in-nav-content{
+	padding : 10px 0px;
+	font-size: 1.35rem;
+}
+
+
+
+.sign-in-wrap{
+	max-width : 1000px;
+	width : 95%;
+	margin : auto;
+}
+
+.sign-in-form-wrap{
+	max-width: 460px;
+	margin : auto;
+}
+
+.forgot-password{
+	color : blue;
+	font-size: 0.7rem;
+}
+
+.sign-in-btn{
+	max-width : 100px;
+	margin : auto
+}
+
+.forgot-password-area{
+	max-width : 300px;
+	margin : auto
+}
+
+.pointer{
+	cursor: pointer;
+}
+

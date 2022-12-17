@@ -3,7 +3,7 @@
 <div class = "join-navbar">
 	<div class = "join-nav-wrap px-3">
 		<div class = "join-nav-content">
-			JOIN
+			Sign up
 		</div>
 	</div>
 </div>
