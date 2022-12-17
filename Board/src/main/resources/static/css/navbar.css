@@ -1,0 +1,95 @@
+@charset "UTF-8";
+
+.contents {
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+    height: 100%;
+    position: relative;
+}
+
+nav{
+    box-shadow: 0 2px 4px 0 hsl(0deg 0% 81% / 50%);
+    height: 64px;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 74;
+    color : white;
+    background-color: rgb(51, 51, 51);
+}
+
+.pc-area{
+    display : flex;
+    height : 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mobile-area{
+	display : none;
+	height : 100%;
+	justify-content: space-between;
+	align-items : center;
+}
+
+.pc-menu-item{
+    font-size: 0.85rem;
+    font-weight: 0;
+    padding : 0px 0.625rem 0px 0.625rem;
+}
+
+.mobile-menu-item{
+	font-size : 0.8rem;
+	padding : 5px 5px;
+}
+
+.pc-homeIcon{
+    padding-right : 15px;
+}
+
+.mobile-header{
+	flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobile-right{
+	flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.mobile-left{
+	flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+/* 상단바에 글씨들의 행위치가 살짝 올라간거 같아서 아래로 내려줌ㅋ */
+.menu-name{
+	position : relative;
+	top : 3px;
+}
+
+.pointer{
+	cursor : pointer;
+}
+
+@media(max-width:800px){
+	.pc-area{
+		display : none;
+	}
+	
+	.mobile-area{
+		display : flex;
+	}
+}
+
+@media(max-width:576px){
+    .area{
+        justify-content: center;
+    }
+}
