@@ -51,14 +51,6 @@ $('#inputPassword').keyup(()=>{
 	}
 })
 
-$('#inputPassword').focus(()=>{
-	$('.form-error-pw').show();
-})
-
-$('#inputPassword').blur(()=>{
-	$('.form-error-pw').hide();
-})
-
 // 비밀번호 재확인 검사
 $('#inputPasswordCheck').keyup(()=>{
 	pwReCheck = false;
@@ -70,11 +62,19 @@ $('#inputPasswordCheck').keyup(()=>{
 	}
 })
 
+// 이메일 유효성 검사
+$('#inputEmail').keyup(()=>{
+	let email = $("#inputEmail").val();
+	emailCheck = false;
+	var exptext = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+	if(!exptext.test(email)){
+		$('.form-error-email').show();
+	}else{
+		$('.form-error-email').hide();
+		emailCheck = true;
+	}
+})
+
 $("#joinBtn").click(()=>{
 	
-	if(pwCheck && pwReCheck){
-		alert('통과');
-	}else{
-		alert("실패");
-	}
 })

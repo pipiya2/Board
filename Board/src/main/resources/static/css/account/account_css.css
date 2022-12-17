@@ -27,9 +27,6 @@
    	font-weight: 400;
 }
 
-.form-error-pw{
-	display : none;
-}
 
 .valid-pass{
 	color : #00c471 !important;
@@ -46,6 +43,11 @@
 }
 
 .form-error-pw-check{
+	display : none;
+	color : red !important;
+}
+
+.form-error-email{
 	display : none;
 	color : red !important;
 }

@@ -24,12 +24,15 @@
 		<div class="form-floating mb-2">
 		  <input type="email" class="form-control" id="inputEmail" placeholder="example@ex.ex">
 		  <label for="inputEmail">이메일</label>
+		  <div id = "emailHelp" class="mt-1 form-error-text form-error-email">
+		   		잘못된 이메일 형식입니다.
+		   </div>
 		</div>
 		<!-- // 암호 -->
 		<div class="form-floating mb-2">
 		  <input type="password" class="form-control" id="inputPassword" placeholder="암호">
 		  <label for="inputPassword">암호</label>
-		  <div class="form-error-text form-error-pw mt-1">
+		  <div class="form-error-text mt-1">
 		   		<span id = "f_valid">특수문자(`~!@#$%^&*.|'";:/?), 숫자 포함</span><br>
 		   		<span id = "s_valid">8자 이상 32자 이하 입력</span><br>
 		   		<span id = "t_valid">연속 3자 이상 동일한 문자/숫자 제외</span>
