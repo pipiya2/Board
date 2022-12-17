@@ -17,8 +17,8 @@ public class CommonController {
 	@GetMapping("/account")
 	public String accountPage(Model model) {
 		model.addAttribute("mainContents","account");
-		model.addAttribute("mainCss","account_css");
-		model.addAttribute("mainJs","account_js");
+		model.addAttribute("mainCss","account/account_css");
+		model.addAttribute("mainJs","account/account_js");
 		return "/index";
 	}
 }
