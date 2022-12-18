@@ -14,13 +14,13 @@
 		<!-- ID -->
 		<div class="form-floating mb-2">
 		  <input type="text" class="form-control" maxlength="10" id="inputEmail" placeholder="EMAIL">
-		  <label for="inputEmail">EMAIL</label>
+		  <label for="inputEmail">이메일</label>
 		</div>
 		
 		<!-- PW -->
 		<div class="form-floating mb-2">
 		  <input type="password" class="form-control" maxlength="10" id="inputPw" placeholder="PW">
-		  <label for="inputPw">PW</label>
+		  <label for="inputPw">암호</label>
 		</div>
 		
 	</div>

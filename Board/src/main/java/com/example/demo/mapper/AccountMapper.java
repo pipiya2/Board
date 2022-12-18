@@ -7,4 +7,6 @@ import com.example.demo.vo.UserVo;
 @Mapper
 public interface AccountMapper {
 	public int insertAccount(UserVo uv);
+
+	public int emailCheck(String userEmail);
 }
