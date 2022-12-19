@@ -5,6 +5,9 @@ import java.security.MessageDigest;
 import java.security.SecureRandom;
 import java.util.Base64;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class SecurityService {
 	// 비밀번호 암호화 by salt
 	public String getEncryptionPw(String password, String salt) throws Exception{

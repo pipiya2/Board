@@ -57,3 +57,7 @@
 	display : none;
 	color : red !important;
 }
+
+.form-floating > label{
+	color : gray !important;
+}

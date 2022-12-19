@@ -12,6 +12,9 @@ public class AccountService {
 	@Autowired
 	AccountMapper am;
 	
+	@Autowired
+	SecurityService ss;
+	
 	public Map<String,Object> insertAccount(Map<String, Object> responseData,UserVo uv) throws Exception{
 		boolean isSuccess = false;
 		String errorMessage = "";
@@ -19,19 +22,17 @@ public class AccountService {
 		try {
 			// 이메일 중복체크
 			int emailCheck = am.emailCheck(uv.getUserEmail());
-			if(emailCheck == 0) {
-				int response = am.insertAccount(uv);
-				if(response != 0) {
-					isSuccess = true;
-				}else {
-					errorMessage = "SYSTEM ERROR";
-				}
-			}else {
-				errorMessage = "email이 중복됩니다.";
-			}
 			
+			if(emailCheck != 0) {
+				errorMessage = "email이 중복됩니다.";
+			}else {
+				String salt = ss.getSalt();
+				
+				isSuccess = am.insertAccount(uv) == 1 ? true : false;
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
+			errorMessage = "SYSTEM ERROR";
 		}
 		
 		
