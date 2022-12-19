@@ -11,18 +11,19 @@
 <!-- sign in wrap -->
 <div class = "sign-in-wrap mt-5">
 	<div class = "sign-in-form-wrap mb-5">
-		<!-- ID -->
-		<div class="form-floating mb-2">
-		  <input type="text" class="form-control" maxlength="10" id="inputEmail" placeholder="EMAIL">
-		  <label for="inputEmail">이메일</label>
-		</div>
-		
-		<!-- PW -->
-		<div class="form-floating mb-2">
-		  <input type="password" class="form-control" maxlength="10" id="inputPw" placeholder="PW">
-		  <label for="inputPw">암호</label>
-		</div>
-		
+		<form id = "signInForm">
+			<!-- ID -->
+			<div class="form-floating mb-2">
+			  <input type="text" name = "userEmail" class="form-control" id="inputEmail" placeholder="EMAIL">
+			  <label for="inputEmail">이메일</label>
+			</div>
+			
+			<!-- PW -->
+			<div class="form-floating mb-2">
+			  <input type="password" name = "password" class="form-control" id="inputPw" placeholder="PW">
+			  <label for="inputPw">암호</label>
+			</div>
+		</form>
 	</div>
 	
 	<div class = "sign-in-btn">

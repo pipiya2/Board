@@ -30,3 +30,31 @@ function isBlank(){
 	
 	return false;
 }
+
+// 로그인
+$("#joinBtn").click(()=>{
+	if(!isBlank()){
+		$.ajax({
+			url : "/sign-in",
+			type : "post",
+			data : $("#signInForm").serialize(),
+			beforeSend : ()=>{
+				
+			},
+			success : result =>{
+				console.log("result.ISSUCCESS",result.ISSUCCESS);
+				if(!result.ISSUCCESS){
+					alert(result.ERRORMESSAGE);
+				}else{
+					location.href = result.PREURL;
+				}
+			},
+			error : e=>{
+				alert(e.messaage);
+			},
+			complete : ()=>{
+				
+			}
+		})
+	}
+})

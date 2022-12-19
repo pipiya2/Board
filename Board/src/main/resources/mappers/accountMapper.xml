@@ -4,7 +4,7 @@
 	
 	<!-- insert accout -->
 	<insert id="insertAccount">
-		INSERT INTO account_info
+		INSERT INTO ACCOUNT_INFO
 			(
 				USER_NAME,
 				USER_BIRTH,
@@ -17,14 +17,25 @@
 				#{userName},
 				#{userBirth},
 				#{userEmail},
-				#{password}
+				#{password},
 				#{salt}
 			)
 	</insert>
 	
 	<!-- email check -->
-	<select id="userEmail" resultType="int">
+	<select id="emailCheck" resultType="int">
 		SELECT COUNT(*) FROM ACCOUNT_INFO 
 		WHERE USER_NAME = #{userEmail}
+	</select>
+	
+	<select id="getUserSalt" resultType = "string">
+		SELECT salt FROM ACCOUNT_INFO
+		WHERE USER_EMAIL = #{ userEmail }
+	</select>
+	
+	<select id="signInCheck" resultType = "int">
+		SELECT COUNT(*) FROM ACCOUNT_INFO
+		WHERE USER_EMAIL = #{ userEmail }
+		AND USER_PASSWORD = #{ password } 
 	</select>
 </mapper>

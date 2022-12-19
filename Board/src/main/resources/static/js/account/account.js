@@ -107,7 +107,12 @@ $("#joinBtn").click(()=>{
 				
 			},
 			success : result =>{
-				console.log(result);
+				if(result.ISSUCCESS){
+					alert('회원가입 되었습니다');
+					location.href = "/sign-in";
+				}else{
+					alert(result.ERRORMESSAGE);	
+				}
 			},
 			error : e=>{
 				console.log(e);
