@@ -1,21 +1,5 @@
 @charset "UTF-8";
 
-.join-navbar{
-	width : 100%;
-	border-bottom: 0.1px solid #c0c0c0;
-}
-
-.join-nav-wrap{
-	max-width : 1000px;
-	width : 100%;
-	margin : 0 auto;
-}
-
-.join-nav-content{
-	padding : 10px 0px;
-	font-size: 1.35rem;
-}
-
 .join-wrap{
 	max-width : 1000px;
 	width : 95%;

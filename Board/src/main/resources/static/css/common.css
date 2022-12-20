@@ -10,3 +10,20 @@
 body{
     font-family: 'Pretendard-Regular' !important;
 }
+
+/* 로그인, 회원가입, 회원정보 navbar */ 
+.account-navbar{
+	width : 100%;
+	border-bottom: 0.1px solid #c0c0c0;
+}
+
+.account-nav-wrap{
+	max-width : 1000px;
+	width : 100%;
+	margin : 0 auto;
+}
+
+.account-nav-content{
+	padding : 10px 0px;
+	font-size: 1.35rem;
+}

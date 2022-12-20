@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- sign-in navbar -->
-<div class = "sign-in-navbar">
-	<div class = "sign-in-nav-wrap px-3">
-		<div class = "sign-in-nav-content">
+<div class = "account-navbar">
+	<div class = "account-nav-wrap px-3">
+		<div class = "account-nav-content">
 			Sign in
 		</div>
 	</div>

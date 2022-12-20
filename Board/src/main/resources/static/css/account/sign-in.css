@@ -1,23 +1,5 @@
 @charset "UTF-8";
 
-.sign-in-navbar{
-	width : 100%;
-	border-bottom: 0.1px solid #c0c0c0;
-}
-
-.sign-in-nav-wrap{
-	max-width : 1000px;
-	width : 100%;
-	margin : 0 auto;
-}
-
-.sign-in-nav-content{
-	padding : 10px 0px;
-	font-size: 1.35rem;
-}
-
-
-
 .sign-in-wrap{
 	max-width : 1000px;
 	width : 95%;

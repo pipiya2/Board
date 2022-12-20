@@ -1,3 +1,5 @@
+$("#inputEmail").focus();
+
 // 비밀번호찾기 이메일 유효성 검사
 $('#findpw-email').keyup(()=>{
 	let email = $("#findpw-email").val();
@@ -11,9 +13,14 @@ $('#findpw-email').keyup(()=>{
 	}
 })
 
-$('#findpw-email').on('keyup',key=>{
+//엔터처리
+$('#findpw-email, #inputPw').on('keyup',key=>{
 	if(key.keyCode == 13){
-		$('#findpw-Button').click();
+		if(key.target.id == "inputPw"){
+			$('#joinBtn').click();
+		}else{
+			$('#findpw-Button').click();
+		}
 	}
 })
 
@@ -45,6 +52,8 @@ $("#joinBtn").click(()=>{
 				console.log("result.ISSUCCESS",result.ISSUCCESS);
 				if(!result.ISSUCCESS){
 					alert(result.ERRORMESSAGE);
+					$("#inputPw").val("");
+					$("#inputEmail").focus();
 				}else{
 					location.href = result.PREURL;
 				}
