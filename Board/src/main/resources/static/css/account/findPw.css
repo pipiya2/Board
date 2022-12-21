@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+.changePassword-wrap{
+	margin: 64px auto auto;
+    width: 320px;
+}
+
+.changePassword-wrap > h3{
+	line-height: 45px;
+	font-weight : 400 !important;
+	text-align: center;
+}
+
+.form-error-pw-check {
+    display: none;
+    color: red !important;
+}
+
+.form-error-pw{
+	display : none;
+}
+
+.valid-pass{
+	color : #00c471 !important;
+}
+
+.valid-fail{
+	color : red !important;
+}

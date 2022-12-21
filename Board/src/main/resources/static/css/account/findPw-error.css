@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+.findPw-wrap{
+	margin-top : 6rem;text-align: center;
+}
+
+.findPw-wrap > h3{
+	line-height: 45px; font-weight : 400 !important;
+}

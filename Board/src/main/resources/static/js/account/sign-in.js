@@ -1,5 +1,5 @@
 $("#inputEmail").focus();
-
+let findEmailCheck = false;
 // 비밀번호찾기 이메일 유효성 검사
 $('#findpw-email').keyup(()=>{
 	let email = $("#findpw-email").val();
@@ -65,5 +65,33 @@ $("#joinBtn").click(()=>{
 				
 			}
 		})
+	}
+})
+
+
+// 비밀번호 찾기
+$("#findpw-Button").click(()=>{
+	if(findEmailCheck){
+		$.ajax({
+			url : "/password/verify",
+			type : 'post',
+			data : {
+				userEmail : $("#findpw-email").val()
+			},
+			beforeSend : ()=>{
+				
+			},
+			success : result =>{
+				console.log(result);
+			},
+			error : e=>{
+				alert(e.message);
+			},
+			complete : ()=>{
+				
+			}
+		})
+	}else{
+		$("#findpw-email").focus();
 	}
 })

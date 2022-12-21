@@ -38,4 +38,19 @@
 		WHERE USER_EMAIL = #{ userEmail }
 		AND USER_PASSWORD = #{ password } 
 	</select>
+	
+	<update id="setFIND_TOKEN">
+		UPDATE ACCOUNT_INFO SET
+			FIND_TOKEN = #{token}
+		WHERE USER_EMAIL = #{userEmail}
+	</update>
+	
+	<select id="isExistToken" resultType="UserVo">
+		SELECT 
+			USER_EMAIL,
+			RIGHT(FIND_TOKEN,10) AS 'findPwToken'
+		FROM ACCOUNT_INFO
+		
+		WHERE FIND_TOKEN = <![CDATA[#{token}]]>
+	</select>
 </mapper>

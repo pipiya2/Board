@@ -13,4 +13,8 @@ public interface AccountMapper {
 	public String getUserSalt(UserVo uv);
 
 	public int signInCheck(UserVo uv);
+
+	public int setFIND_TOKEN(String userEmail, String token);
+
+	public UserVo isExistToken(String token);
 }

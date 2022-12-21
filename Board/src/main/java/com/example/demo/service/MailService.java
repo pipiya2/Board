@@ -27,7 +27,7 @@ public class MailService {
 		
 		try {
 			message.addRecipients(RecipientType.TO, toEmail); // 보내는 대상
-			message.setSubject("[PORTFOLIO] 비밀번호 변경 링크"); // 제목
+			message.setSubject("[Moim] 비밀번호 변경 링크"); // 제목
 			
 	        String contenst = "<h1>비밀번호 변경 링크입니다.</h1>";
 	        contenst += "<p>비밀번호 변경 링크입니다.<br>비밀번호 변경하기 버튼을 눌러 비밀번호를 변경해주세요.</p><br><br>";
@@ -36,7 +36,7 @@ public class MailService {
 	        // 
 	        message.setText(String.format(contenst, toEmail,token),"utf-8","html");
 	        
-	        message.setFrom(new InternetAddress("pipiya2@naver.com","Portfoilo_Admin"));
+	        message.setFrom(new InternetAddress("pipiya2@naver.com","Moim_Admin"));
 	        javaMailSender.send(message);
 		}catch (Exception e) {
 			e.printStackTrace();
