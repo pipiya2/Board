@@ -87,20 +87,19 @@ let pwReCheck = false;
 			token = token.substring(token.lastIndexOf('/')+1);
 			
 			let data ={
-				"USER_PW" : $("#change-password").val(),
-				"token" : token
+				"password" : $("#change-password").val(),
+				"findPwToken" : token
 			}
 			$.ajax({
 				url : "/change",
 				type : "post",
 				data : data,
 				beforeSend : ()=>{
-					openOverlay();
 				},
 				success : result=>{
 					if(result.ISSUCCESS){
 						alert("비밀번호가 변경되었습니다. 변경된 비밀번호로 로그인 해주세요.");
-						openModal();
+						location.href = "/sign-in";
 					}else{
 						alert(result.EXCEPTIONMESSAGE);
 						if(result.TYPE == "expiration"){
@@ -117,7 +116,6 @@ let pwReCheck = false;
 					alert(e);
 				},
 				complete : ()=>{
-					closeOverlay();
 				}
 			})
 		}else{

@@ -89,6 +89,8 @@ public class AccountAPI {
 			return responseData;
 		}
 		
+		uv.setPassword(pw);
+		
 		// expiration recheck
 		if(!as.expirationCheck(uv)) {
 			responseData.put("ISSUCCESS", false);
@@ -110,3 +112,4 @@ public class AccountAPI {
 		return responseData;
 	}
 }
+

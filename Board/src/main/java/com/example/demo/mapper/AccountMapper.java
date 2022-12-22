@@ -17,4 +17,6 @@ public interface AccountMapper {
 	public int setFIND_TOKEN(String userEmail, String token);
 
 	public UserVo isExistToken(String token);
+
+	public void changePassword(UserVo uv);
 }

@@ -47,10 +47,17 @@
 	
 	<select id="isExistToken" resultType="UserVo">
 		SELECT 
-			USER_EMAIL,
+			USER_EMAIL AS 'userEmail',
 			RIGHT(FIND_TOKEN,10) AS 'findPwToken'
 		FROM ACCOUNT_INFO
-		
 		WHERE FIND_TOKEN = <![CDATA[#{token}]]>
 	</select>
+	
+	
+	<update id="changePassword">
+		UPDATE ACCOUNT_INFO SET
+			SALT = #{salt},
+			USER_PASSWORD = #{password}
+		WHERE USER_EMAIL = #{userEmail}
+	</update>
 </mapper>

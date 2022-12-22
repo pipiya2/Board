@@ -141,4 +141,10 @@ public class AccountService {
 		
 		return true;
 	}
+
+	public void changePassword(UserVo uv) throws Exception{
+		uv.setSalt(ss.getSalt());
+		uv.setPassword(ss.getEncryptionPw(uv.getPassword(), uv.getSalt()));
+		am.changePassword(uv);
+	}
 }
