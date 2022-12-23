@@ -106,7 +106,7 @@ $("#joinBtn").click(()=>{
 			type : "post",
 			data : formData,
 			beforeSend : ()=>{
-				
+				openOverlay();
 			},
 			success : result =>{
 				if(result.ISSUCCESS){
@@ -120,7 +120,7 @@ $("#joinBtn").click(()=>{
 				console.log(e);
 			},
 			complete : ()=>{
-				
+				closeOverlay();
 			}
 		})
 	}

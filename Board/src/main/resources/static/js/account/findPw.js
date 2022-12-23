@@ -99,6 +99,7 @@ let pwReCheck = false;
 				type : "post",
 				data : data,
 				beforeSend : ()=>{
+					openOverlay();
 				},
 				success : result=>{
 					if(result.ISSUCCESS){
@@ -113,6 +114,7 @@ let pwReCheck = false;
 					alert(e);
 				},
 				complete : ()=>{
+					closeOverlay();
 				}
 			})
 		}else{

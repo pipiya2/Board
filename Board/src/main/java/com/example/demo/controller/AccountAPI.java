@@ -59,7 +59,7 @@ public class AccountAPI {
 		return responseData;
 	}
 	
-	// 비밀번호 찾기 api
+	// 비밀번호 찾기 이메일전송 api
 	@PostMapping("/password/verify")
 	public Map<String, Object> passwordVerify(String userEmail){
 		Map<String, Object> responseData = new HashMap<String, Object>();

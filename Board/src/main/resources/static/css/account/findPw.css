@@ -2,7 +2,7 @@
 
 .changePassword-wrap{
 	margin: 64px auto auto;
-    width: 320px;
+    max-width : 500px !important;
 }
 
 .changePassword-wrap > h3{

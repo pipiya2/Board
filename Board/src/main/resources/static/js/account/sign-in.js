@@ -46,7 +46,7 @@ $("#joinBtn").click(()=>{
 			type : "post",
 			data : $("#signInForm").serialize(),
 			beforeSend : ()=>{
-				
+				openOverlay();
 			},
 			success : result =>{
 				console.log("result.ISSUCCESS",result.ISSUCCESS);
@@ -62,16 +62,19 @@ $("#joinBtn").click(()=>{
 				alert(e.messaage);
 			},
 			complete : ()=>{
-				
+				closeOverlay();
 			}
 		})
 	}
 })
 
 
-// 비밀번호 찾기
+// 비밀번호찾기 메일전송
 $("#findpw-Button").click(()=>{
 	if(findEmailCheck){
+		// 중복전송 방지
+		$("#findpw-Button").attr('disabled','disabled');
+		
 		$.ajax({
 			url : "/password/verify",
 			type : 'post',
@@ -79,16 +82,18 @@ $("#findpw-Button").click(()=>{
 				userEmail : $("#findpw-email").val()
 			},
 			beforeSend : ()=>{
-				
+				openOverlay();
 			},
 			success : result =>{
-				console.log(result);
+				let message = result.ISSUCCESS ?  '이메일로 비밀번호 변경 링크를 보냈습니다' : result.ERRORMESSAGE;
+				alert(message);
 			},
 			error : e=>{
 				alert(e.message);
 			},
 			complete : ()=>{
-				
+				closeOverlay();
+				$("#findpw-Button").attr('disabled',false);
 			}
 		})
 	}else{
