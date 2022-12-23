@@ -18,5 +18,5 @@ public interface AccountMapper {
 
 	public UserVo isExistToken(String token);
 
-	public void changePassword(UserVo uv);
+	public int changePassword(UserVo uv);
 }

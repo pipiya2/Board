@@ -10,7 +10,7 @@ let pwReCheck = false;
 		let pw = $("#change-password").val();
 		var num = pw.search(/[0-9]/g);
 		var eng = pw.search(/[a-z]/ig);
-		var spe = pw.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
+		var spe = pw.search(/[`~!@@#$%^&*.|₩₩₩'₩";:₩/?]/gi);
 		let checkCount = 0;
 		pwCheck = false;
 		// pw.length ==> 0일경우 세가지 유효성 검사 초기화
@@ -26,7 +26,7 @@ let pwReCheck = false;
 		}
 		
 		// 영문/숫자/특수문자중 2가지 이상 포함
-		if((num < 0 && eng < 0) || (eng < 0 && spe < 0) || (spe < 0 && num < 0)){
+		if(spe == -1 || num == -1){
 			$("#f_valid").addClass('valid-fail');
 		}else{
 			$("#f_valid").removeClass('valid-fail');
@@ -90,6 +90,10 @@ let pwReCheck = false;
 				"password" : $("#change-password").val(),
 				"findPwToken" : token
 			}
+			
+			$("#change-password").val("");
+			$("#change-password-check").val("");
+			
 			$.ajax({
 				url : "/change",
 				type : "post",
@@ -102,15 +106,8 @@ let pwReCheck = false;
 						location.href = "/sign-in";
 					}else{
 						alert(result.EXCEPTIONMESSAGE);
-						if(result.TYPE == "expiration"){
-							location.reload();
-							return;
-						}else if(rsult.TYPE == "bad url"){
-							location.href = '/password/bad/bad';
-						}
+						location.reload();
 					}
-					$("#change-password").val("");
-					$("#change-password-check").val("");
 				},
 				error : e=>{
 					alert(e);

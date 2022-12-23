@@ -142,9 +142,41 @@ public class AccountService {
 		return true;
 	}
 
-	public void changePassword(UserVo uv) throws Exception{
-		uv.setSalt(ss.getSalt());
-		uv.setPassword(ss.getEncryptionPw(uv.getPassword(), uv.getSalt()));
-		am.changePassword(uv);
+	public Map<String,Object> changePassword(UserVo uv,Map<String,Object> responseData) throws Exception{
+		String newPw = uv.getPassword();
+		String token = uv.getFindPwToken();
+		String salt = "";
+		// 요청받은 토큰이 테이터베이스에 있는지 확인
+		uv = isExistToken(token);
+		if(uv == null) {
+			responseData.put("ISSUCCESS", false);
+			responseData.put("EXCEPTIONMESSAGE","잘못된 요청입니다.");
+			return responseData;
+		}
+		
+		// 요청받은 토큰이 유효한지 확인
+		if(!expirationCheck(uv)) {
+			responseData.put("ISSUCCESS", false);
+			responseData.put("EXCEPTIONMESSAGE","비밀번호 찾기 요청 시간이 만료되었습니다.");
+			return responseData;
+		}
+		
+		// 새로운 salt 생성
+		salt = ss.getSalt();
+		// 새로운 비밀번호 생성
+		newPw = ss.getEncryptionPw(newPw, salt);
+		// salt, newPw 저장
+		uv.setPassword(newPw);
+		uv.setSalt(salt);
+		boolean isChanged = am.changePassword(uv) == 1 ? true : false;
+		// 쿼리문제로 비밀번호가 변경되지 않았을 경우
+		if(!isChanged) {
+			responseData.put("ISSUCCESS", false);
+			responseData.put("EXCEPTIONMESSAGE","SYSTEM ERROR 관리자 문의바람.(쿼리)");
+			return responseData;
+		}
+		
+		responseData.put("ISSUCCESS", true);
+		return responseData;
 	}
 }

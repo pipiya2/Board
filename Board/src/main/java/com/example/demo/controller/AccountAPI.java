@@ -75,39 +75,17 @@ public class AccountAPI {
 		return responseData;
 	}
 	
+	// 비밀번호 변경
 	@PostMapping("/change")
 	public Map<String, Object> changePassword(UserVo uv){
 		Map<String, Object>responseData = new HashMap<String, Object>();
-		String pw = uv.getPassword();
-		String token = uv.getFindPwToken();
-		uv = as.isExistToken(token);
-		
-		if(uv == null) {
-			responseData.put("ISSUCCESS", false);
-			responseData.put("EXCEPTIONMESSAGE","잘못된 요청입니다.");
-			responseData.put("TYPE","bad url");
-			return responseData;
-		}
-		
-		uv.setPassword(pw);
-		
-		// expiration recheck
-		if(!as.expirationCheck(uv)) {
-			responseData.put("ISSUCCESS", false);
-			responseData.put("EXCEPTIONMESSAGE","비밀번호 찾기 요청 시간이 만료되었습니다.");
-			responseData.put("TYPE","expiration");
-			return responseData;
-		}
-		
 		try {
-			as.changePassword(uv);
-			responseData.put("ISSUCCESS", true);
-		} catch (Exception e) {
+			responseData = as.changePassword(uv,responseData);
+		} catch (Exception e1) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			e1.printStackTrace();
 			responseData.put("ISSUCCESS", false);
-			responseData.put("EXCEPTIONMESSAGE", "변경중 오류");
-			responseData.put("TYPE", "error");
+			responseData.put("ERRORMESSAGE", "SYSTEM ERROR 관리자 문의바람");
 		}
 		return responseData;
 	}

@@ -6,7 +6,7 @@
 		   <label for="change-password" class="form-label">비밀번호</label>
 		   <input type="password" autocomplete="one-time-code" placeholder= "*******" class="form-control" name = "userPassword" id="change-password">
 		   <div class="form-text form-error-pw">
-		   		<span id = "f_valid">영문/숫자/특수문자 2가지 이상 포함</span><br>
+		   		<span id = "f_valid">특수문자(`~!@#$%^&*.|'";:/?), 숫자 포함</span><br>
 		   		<span id = "s_valid">8자 이상 32자 이하 입력 (공백 제외)</span><br>
 		   		<span id = "t_valid">연속 3자 이상 동일한 문자/숫자 제외</span>
 		   </div>
