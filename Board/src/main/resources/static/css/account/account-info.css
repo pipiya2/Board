@@ -1,1 +1,6 @@
 @charset "UTF-8";
+.account-info-wrap{
+	max-width: 1000px;
+    width: 95%;
+    margin: auto;
+}
