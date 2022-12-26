@@ -25,8 +25,9 @@
 	<div class="card mb-4">
 	    <div class="card-body">
 	      <h5 class="card-title">내정보</h5>
-	      <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-	      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+	      <p class="card-text">이름 : 강화강</p>
+	      <p class="card-text">이메일 : pipiya2@naver.com</p>
+	      <p class="card-text">생일 : 1997-01-29</p>
 	    </div>
 	</div>
 	

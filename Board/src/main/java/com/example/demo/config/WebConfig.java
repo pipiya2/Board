@@ -28,8 +28,10 @@ public class WebConfig implements WebMvcConfigurer{
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(new LoggerInterceptor())
-		.addPathPatterns("/login");		 // addPathPatterns ==> 특정 url만 이 인터셉터를 호출하게 한다. 
+		// addPathPatterns ==> 특정 url만 이 인터셉터를 호출하게 한다. 
+		.addPathPatterns("/sign-in")
+		.addPathPatterns("/account-info")
+		.addPathPatterns("/account");
 		//.excludePathPatterns("/hi")    // excludePathPatterns ==> 특정 url은 이 인터셉터를 호출하지 않게 한다.
 	}
-	
 }
