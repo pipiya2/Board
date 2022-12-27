@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -11,6 +13,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.example.demo.service.AccountService;
+import com.example.demo.service.BoardService;
+import com.example.demo.vo.BoardVo;
 import com.example.demo.vo.UserVo;
 
 @Controller
@@ -18,6 +22,9 @@ public class CommonController {
 	
 	@Autowired
 	AccountService as; 
+	
+	@Autowired
+	BoardService bs;
 	
 	// 메인 페이지
 	@GetMapping("/")
@@ -79,23 +86,7 @@ public class CommonController {
 	// 모임
 	@GetMapping("/moim/{pageType}")
 	public String moim(HttpServletRequest request, Model model,@PathVariable String pageType) {
-		switch(pageType) {
-			case "all" :
-				//TODO
-				break;
-			case "study" :
-				//TODO
-				break;
-			case "exercise" :
-				//TODO
-				break;
-			case "meal" :
-				//TODO
-				break;
-			case "fun" :
-				//TODO
-				break;
-		}
+		
 		model.addAttribute("mainContents","moimFrame/common");
 		model.addAttribute("mainCss","moim/common");
 		model.addAttribute("mainJs","moim/common/");
