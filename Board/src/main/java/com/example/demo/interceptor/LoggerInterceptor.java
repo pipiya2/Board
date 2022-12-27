@@ -14,36 +14,36 @@ public class LoggerInterceptor implements HandlerInterceptor{
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		// TODO Auto-generated method stub
-		String headerUrl = request.getHeader("referer");
-		//System.out.println(this.url);
-		String requestUrl = request.getRequestURL().toString();
-		boolean isLogged = request.getSession().getAttribute("log") == null ? false : true;
-		switch (requestUrl) {
-			case "http://localhost:8080/account-info": 
-				if(!isLogged) {
-					response.sendRedirect("/");
-					return false;
-				}
-				break;
-			case "http://localhost:8080/sign-in" :
-				if(isLogged) {
-					response.sendRedirect("/");
-					return false;
-				}
-				
-				String defaultPreUrl = "/";
-				if(headerUrl != null && !headerUrl.contains("account")) {
-					defaultPreUrl = headerUrl;
-				}
-				request.getSession().setAttribute("preUrl", defaultPreUrl);
-				break;
-			case "http://localhost:8080/account" :
-				if(isLogged) {
-					response.sendRedirect("/");
-					return false;
-				}
-				break;
-		}
+//		String headerUrl = request.getHeader("referer");
+//		//System.out.println(this.url);
+//		String requestUrl = request.getRequestURL().toString();
+//		boolean isLogged = request.getSession().getAttribute("log") == null ? false : true;
+//		switch (requestUrl) {
+//			case "http://localhost:8080/account-info": 
+//				if(!isLogged) {
+//					response.sendRedirect("/");
+//					return false;
+//				}
+//				break;
+//			case "http://localhost:8080/sign-in" :
+//				if(isLogged) {
+//					response.sendRedirect("/");
+//					return false;
+//				}
+//				
+//				String defaultPreUrl = "/";
+//				if(headerUrl != null && !headerUrl.contains("account")) {
+//					defaultPreUrl = headerUrl;
+//				}
+//				request.getSession().setAttribute("preUrl", defaultPreUrl);
+//				break;
+//			case "http://localhost:8080/account" :
+//				if(isLogged) {
+//					response.sendRedirect("/");
+//					return false;
+//				}
+//				break;
+//		}
 		return true;
 	}
 

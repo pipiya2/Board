@@ -22,6 +22,7 @@
 
 <!-- Account Info wrap -->
 <div class = "account-info-wrap mt-5">
+	<a href= "/logout">logout</a>
 	<div class="card mb-4">
 	    <div class="card-body">
 	      <h5 class="card-title">내정보</h5>

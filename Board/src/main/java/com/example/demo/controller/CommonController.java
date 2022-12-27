@@ -39,10 +39,11 @@ public class CommonController {
 	
 	// 로그인 페이지
 	@GetMapping("/sign-in")
-	public String signIn(Model model) {
+	public String signIn(Model model,HttpServletRequest request) {
 		model.addAttribute("mainContents","account/sign-in");
 		model.addAttribute("mainCss","account/sign-in");
 		model.addAttribute("mainJs","account/sign-in");
+		model.addAttribute("headerInfo",request.getHeader("referer"));
 		return "index";
 	}
 	
@@ -55,8 +56,9 @@ public class CommonController {
 		return "index";
 	}
 	
+	// 비밀번호 변경
 	@GetMapping("/password/{email}/{token}")
-	private String findPwRoute(HttpServletRequest request, Model model,@PathVariable String email,@PathVariable String token) {
+	public String findPwRoute(HttpServletRequest request, Model model,@PathVariable String email,@PathVariable String token) {
 		UserVo uv = as.isExistToken(token);
 		String mainContent = "account/findPw";
 		String mainCss = "account/findPw";
@@ -72,5 +74,38 @@ public class CommonController {
 		model.addAttribute("mainCss",mainCss);
 		model.addAttribute("mainJs",mainJs);
 		return "index";
+	}
+	
+	// 모임
+	@GetMapping("/moim/{pageType}")
+	public String moim(HttpServletRequest request, Model model,@PathVariable String pageType) {
+		switch(pageType) {
+			case "all" :
+				//TODO
+				break;
+			case "study" :
+				//TODO
+				break;
+			case "exercise" :
+				//TODO
+				break;
+			case "meal" :
+				//TODO
+				break;
+			case "fun" :
+				//TODO
+				break;
+		}
+		model.addAttribute("mainContents","moimFrame/common");
+		model.addAttribute("mainCss","moim/common");
+		model.addAttribute("mainJs","moim/common/");
+		return "index";
+	}
+	
+	// 로그아웃
+	@GetMapping("/logout")
+	public String logout(HttpServletRequest request) {
+		request.getSession().removeAttribute("log");
+		return "redirect:/";
 	}
 }

@@ -23,6 +23,7 @@
 			  <input type="password" name = "password" class="form-control" id="inputPw" placeholder="PW">
 			  <label for="inputPw">암호</label>
 			</div>
+			<input type = "hidden" name = "headerInfo" value = "${ headerInfo }"/>
 		</form>
 	</div>
 	

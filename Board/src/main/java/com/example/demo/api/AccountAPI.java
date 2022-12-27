@@ -47,10 +47,13 @@ public class AccountAPI {
 	
 	// 로그인 api
 	@PostMapping("/sign-in")
-	public Map<String, Object>signIn(HttpServletRequest request,UserVo uv){
+	public Map<String, Object>signIn(HttpServletRequest request,UserVo uv,String headerInfo){
 		Map<String, Object> responseData = new HashMap<String, Object>();
 		try {
+			responseData = as.setPreUrl(request, responseData,headerInfo);
 			responseData = as.signIn(responseData,uv,request);
+			responseData.put("PREURL", request.getSession().getAttribute("preUrl"));
+			request.getSession().removeAttribute("preUrl");
 		}catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();

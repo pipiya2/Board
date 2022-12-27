@@ -66,7 +66,7 @@ public class AccountService {
 				errorMessage = "이메일 혹은 암호를 잘못입력하셨습니다.\n 이메일 혹은 암호를 다시 입력해주세요";
 				isSuccess = false;
 			}else {
-				preUrl = "/";
+				preUrl = request.getSession().getAttribute("preUrl") == null ? "/" : request.getSession().getAttribute("preUrl").toString();
 				uv = new UserVo(
 						uv.getUserName(),
 						"",
@@ -177,6 +177,27 @@ public class AccountService {
 		}
 		
 		responseData.put("ISSUCCESS", true);
+		return responseData;
+	}
+
+	public Map<String, Object> setPreUrl(HttpServletRequest request, Map<String, Object> responseData,String headerInfo) {
+		// TODO Auto-generated method stub
+		Object preUrl = request.getSession().getAttribute("preUrl");
+		// 세션에 이전페이지 정보가 저장되어있지 않으면 헤더에서 이전페이지를 새로 추출한다.
+		if(preUrl == null) {
+			// 헤더에 이전페이지 정보가 null 이면 url을 직접입력하여 접속한 것이므로 디폴트 홈 url 값인 "/" 을 저장한다.
+			preUrl = headerInfo == null ? "/" : headerInfo;
+		}
+		
+		switch (preUrl.toString()) {
+			case "http://localhost:8080/account-info": 
+			case "http://localhost:8080/sign-in" :
+			case "http://localhost:8080/account" :
+				preUrl = "/";
+				break;
+		}
+		request.getSession().setAttribute("preUrl", preUrl);
+		
 		return responseData;
 	}
 }
