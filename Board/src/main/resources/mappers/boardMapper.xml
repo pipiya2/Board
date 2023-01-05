@@ -8,17 +8,20 @@
 		SELECT
 			BOARD_NO AS 'boardNo',
 			CATEGORY AS 'category',
-			USER_EMAIL AS 'userEmail'
-			SUBJECT  AS 'subject'
-			CONTENT AS 'content'
-			VIEW_CNT AS 'viewCnt'
-			REPLY_CNT AS 'replyCnt'
-			LIKE_CNT AS 'likeCnt'
-			DISLIKE_CNT AS 'disLikeCnt'
+			USER_EMAIL AS 'userEmail',
+			SUBJECT  AS 'subject',
+			CONTENT AS 'content',
+			VIEW_CNT AS 'viewCnt',
+			REPLY_CNT AS 'replyCnt',
+			LIKE_CNT AS 'likeCnt',
+			DISLIKE_CNT AS 'disLikeCnt',
 			CREATE_TIME AS 'createTime'
 		FROM BOARD_INFO
 		WHERE 
-		${column} = #{data}
+			CASE 
+				WHEN (#{column} = 'CATEGORY' AND  #{data} = 'all')  THEN 1 = 1
+				ELSE ${column} = #{data}
+			END
 	</select>
 	
 	

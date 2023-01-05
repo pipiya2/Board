@@ -12,11 +12,11 @@
                    </svg>
 				</div>
 				<div class="pc-menu-item menu-name pointer go-flag" data-targetUrl='/moim/all'>모든모임</div>
-				<div class="pc-menu-item menu-name pointer go-flag" data-targetUrl='/study'>스터디</div>
-				<div class="pc-menu-item menu-name pointer go-flag" data-targetUrl='/health'>운동</div>
-				<div class="pc-menu-item menu-name pointer go-flag" data-targetUrl='/meal'>식사</div>
-				<div class="pc-menu-item menu-name pointer go-flag" data-targetUrl='/alcohol'>술자리</div>
-				<div class="pc-menu-item menu-name pointer go-flag" data-targetUrl='/make'>모임만들기</div>
+				<div class="pc-menu-item menu-name pointer go-flag" data-targetUrl='/moim/study'>스터디</div>
+				<div class="pc-menu-item menu-name pointer go-flag" data-targetUrl='/moim/health'>운동</div>
+				<div class="pc-menu-item menu-name pointer go-flag" data-targetUrl='/moim/meal'>식사</div>
+				<div class="pc-menu-item menu-name pointer go-flag" data-targetUrl='/moim/alcohol'>술자리</div>
+				<div class="pc-menu-item menu-name pointer go-flag" data-targetUrl='/make-class'>모임만들기</div>
 			</div>
 
 			<!-- 회원정보,로그인,회원가입 공간 -->

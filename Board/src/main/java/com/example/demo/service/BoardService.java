@@ -13,7 +13,8 @@ public class BoardService {
 	@Autowired
 	BoardMapper bm;
 	
-	public ArrayList<BoardVo> getBoardList(String column,String data){
+	/** column명 , column과 비교할 데이터*/
+	public ArrayList<BoardVo> getBoardList(String column,String data) throws Exception{
 		return bm.getBoardList(column,data);
 	}
 }

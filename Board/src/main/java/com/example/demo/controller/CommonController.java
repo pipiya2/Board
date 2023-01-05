@@ -28,38 +28,30 @@ public class CommonController {
 	
 	// 메인 페이지
 	@GetMapping("/")
-	public String home(Model model,HttpServletRequest request) {
-		model.addAttribute("mainContents","mainHome");
-		model.addAttribute("mainCss","mainHome");
-		model.addAttribute("mainJs","mainHome");
-		return "index";
+	public String home() {
+		return "redirect:/moim/all";
 	}
 	
 	// 회원가입 페이지
 	@GetMapping("/account")
 	public String accountPage(Model model) {
-		model.addAttribute("mainContents","account/account");
-		model.addAttribute("mainCss","account/account");
-		model.addAttribute("mainJs","account/account");
+		setModelAttribute(model,"account/account", "account/account", "account/account");
 		return "index";
 	}
 	
 	// 로그인 페이지
 	@GetMapping("/sign-in")
 	public String signIn(Model model,HttpServletRequest request) {
-		model.addAttribute("mainContents","account/sign-in");
-		model.addAttribute("mainCss","account/sign-in");
-		model.addAttribute("mainJs","account/sign-in");
 		model.addAttribute("headerInfo",request.getHeader("referer"));
+		
+		setModelAttribute(model,"account/sign-in", "account/sign-in", "account/sign-in");
 		return "index";
 	}
 	
 	// 회원정보 페이지
 	@GetMapping("/account-info")
 	public String accountInfo(Model model) {
-		model.addAttribute("mainContents","account/account-info");
-		model.addAttribute("mainCss","account/account-info");
-		model.addAttribute("mainJs","account/account-info");
+		setModelAttribute(model, "account/account-info", "account/account-info", "account/account-info");
 		return "index";
 	}
 	
@@ -77,19 +69,42 @@ public class CommonController {
 			mainCss = "account/findPw-error";
 			mainJs = "account/findPw-error";
 		}
-		model.addAttribute("mainContents",mainContent);
-		model.addAttribute("mainCss",mainCss);
-		model.addAttribute("mainJs",mainJs);
+		setModelAttribute(model, mainContent, mainCss, mainJs);
 		return "index";
 	}
 	
 	// 모임
 	@GetMapping("/moim/{pageType}")
-	public String moim(HttpServletRequest request, Model model,@PathVariable String pageType) {
+	public String moim(HttpServletRequest request, Model model,@PathVariable String pageType){
+		// 공통 param
+		setModelAttribute(model, "moimFrame/commonFrame", "moim/common", "moim/common");
 		
-		model.addAttribute("mainContents","moimFrame/common");
-		model.addAttribute("mainCss","moim/common");
-		model.addAttribute("mainJs","moim/common/");
+		
+		String pageName = "";
+		switch (pageType) {
+			case "all": pageName = "모든모임"; break;
+			case "study": pageName = "스터디"; break;
+			case "health": pageName = "운동"; break;
+			case "meal": pageName = "식사"; break;
+			case "alcohol": pageName = "술자리"; break;
+			default : pageName = "error";
+		}
+		
+		// 오류
+		if(pageName.equals("error")) return "error page";
+		
+		// 해당하는 페이지명에 따른 게시글을 가져와야함.
+		ArrayList<BoardVo> boardList = null;
+		try {
+			boardList = bs.getBoardList("CATEGORY", pageType);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		// 넘겨줄 param
+		model.addAttribute("pageName",pageName);
+		model.addAttribute("boardList",boardList);
 		return "index";
 	}
 	
@@ -98,5 +113,15 @@ public class CommonController {
 	public String logout(HttpServletRequest request) {
 		request.getSession().removeAttribute("log");
 		return "redirect:/";
+	}
+	
+	
+	
+	
+	/**contentsPath, cssPath , jsPath*/ 
+	private void setModelAttribute (Model model,String contentPath,String cssPath,String jsPath) {
+		model.addAttribute("mainContents",contentPath);
+		model.addAttribute("mainCss",cssPath);
+		model.addAttribute("mainJs",jsPath);
 	}
 }
