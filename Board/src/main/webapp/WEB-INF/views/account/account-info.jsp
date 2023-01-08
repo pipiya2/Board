@@ -11,15 +11,6 @@
 		white-space : nowrap;
 	}
 </style>
-<!-- Account Info navbar -->
-<div class = "account-navbar">
-	<div class = "account-nav-wrap px-3">
-		<div class = "account-nav-content">
-			회원정보
-		</div>
-	</div>
-</div>
-
 <!-- Account Info wrap -->
 <div class = "account-info-wrap mt-5">
 	<a href= "/logout">logout</a>

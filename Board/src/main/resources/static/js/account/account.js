@@ -99,29 +99,31 @@ function isBlank(){
 
 $("#joinBtn").click(()=>{
 	if(!isBlank() && pwCheck && pwReCheck){
-		// send account info
-		let formData = $("#signUpForm").serialize();
-		$.ajax({
-			url : "/sign-up",
-			type : "post",
-			data : formData,
-			beforeSend : ()=>{
-				openOverlay();
-			},
-			success : result =>{
-				if(result.ISSUCCESS){
-					alert('회원가입 되었습니다');
-					location.href = "/sign-in";
-				}else{
-					alert(result.ERRORMESSAGE);	
+		if(confirm("한번 설정한 정보는 변경이 불가능합니다.\n가입을 진행하시겠습니까?")){
+			// send account info
+			let formData = $("#signUpForm").serialize();
+			$.ajax({
+				url : "/sign-up",
+				type : "post",
+				data : formData,
+				beforeSend : ()=>{
+					openOverlay();
+				},
+				success : result =>{
+					if(result.ISSUCCESS){
+						alert('회원가입 되었습니다');
+						location.href = "/sign-in";
+					}else{
+						alert(result.ERRORMESSAGE);	
+					}
+				},
+				error : e=>{
+					console.log(e);
+				},
+				complete : ()=>{
+					closeOverlay();
 				}
-			},
-			error : e=>{
-				console.log(e);
-			},
-			complete : ()=>{
-				closeOverlay();
-			}
-		})
+			})
+		}
 	}
 })

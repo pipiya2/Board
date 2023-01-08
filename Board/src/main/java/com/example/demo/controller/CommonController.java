@@ -36,6 +36,7 @@ public class CommonController {
 	@GetMapping("/account")
 	public String accountPage(Model model) {
 		setModelAttribute(model,"account/account", "account/account", "account/account");
+		setPageName(model,"Sign-up");
 		return "index";
 	}
 	
@@ -43,7 +44,7 @@ public class CommonController {
 	@GetMapping("/sign-in")
 	public String signIn(Model model,HttpServletRequest request) {
 		model.addAttribute("headerInfo",request.getHeader("referer"));
-		
+		setPageName(model,"Sign-in");
 		setModelAttribute(model,"account/sign-in", "account/sign-in", "account/sign-in");
 		return "index";
 	}
@@ -52,6 +53,7 @@ public class CommonController {
 	@GetMapping("/account-info")
 	public String accountInfo(Model model) {
 		setModelAttribute(model, "account/account-info", "account/account-info", "account/account-info");
+		setPageName(model,"회원정보");
 		return "index";
 	}
 	
@@ -70,6 +72,7 @@ public class CommonController {
 			mainJs = "account/findPw-error";
 		}
 		setModelAttribute(model, mainContent, mainCss, mainJs);
+		setPageName(model,"비밀번호 변경");
 		return "index";
 	}
 	
@@ -77,7 +80,7 @@ public class CommonController {
 	@GetMapping("/moim/{pageType}")
 	public String moim(HttpServletRequest request, Model model,@PathVariable String pageType){
 		// 공통 param
-		setModelAttribute(model, "moimFrame/commonFrame", "moim/common", "moim/common");
+		setModelAttribute(model, "moimFrame/commonFrame", "moim/moim", "moim/moim");
 		
 		
 		String pageName = "";
@@ -103,8 +106,9 @@ public class CommonController {
 		}
 		
 		// 넘겨줄 param
-		model.addAttribute("pageName",pageName);
+		setPageName(model,pageName);
 		model.addAttribute("boardList",boardList);
+		model.addAttribute("count",10);
 		return "index";
 	}
 	
@@ -115,8 +119,10 @@ public class CommonController {
 		return "redirect:/";
 	}
 	
-	
-	
+	// 공통 페이지명 설정
+	private void setPageName(Model model,String pageName) {
+		model.addAttribute("pageName",pageName);
+	}
 	
 	/**contentsPath, cssPath , jsPath*/ 
 	private void setModelAttribute (Model model,String contentPath,String cssPath,String jsPath) {

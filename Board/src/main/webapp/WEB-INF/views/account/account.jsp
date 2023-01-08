@@ -1,12 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!-- account navbar -->
-<div class = "account-navbar">
-	<div class = "account-nav-wrap px-3">
-		<div class = "account-nav-content">
-			Sign up
-		</div>
-	</div>
-</div>
 <!-- account wrap -->
 <div class = "join-wrap mt-5">
 	<div class = "join-form-wrap mb-5">
