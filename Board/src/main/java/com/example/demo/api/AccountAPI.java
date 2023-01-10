@@ -21,7 +21,7 @@ import com.example.demo.vo.UserVo;
 public class AccountAPI {
 	
 	@Autowired
-	AccountService as;
+	AccountService accountService;
 	
 	@Autowired
 	SecurityService ss;
@@ -35,7 +35,7 @@ public class AccountAPI {
 		Map<String, Object> responseData = new HashMap<String, Object>();
 		
 		try {
-			responseData = as.insertAccount(responseData,uv);
+			responseData = accountService.insertAccount(responseData,uv);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -47,12 +47,17 @@ public class AccountAPI {
 	
 	// 로그인 api
 	@PostMapping("/sign-in")
-	public Map<String, Object>signIn(HttpServletRequest request,UserVo uv,String headerInfo){
+	public Map<String, Object>signIn(HttpServletRequest request,UserVo uv){
+		// client로 보내줄 응답데이터 정의
 		Map<String, Object> responseData = new HashMap<String, Object>();
+		
 		try {
-			responseData = as.setPreUrl(request, responseData,headerInfo);
-			responseData = as.signIn(responseData,uv,request);
-			responseData.put("PREURL", request.getSession().getAttribute("preUrl"));
+			responseData = accountService.signIn(responseData,uv,request);
+			// 로그인이 성공됐으면
+			if((boolean)responseData.get("ISSUCCESS")) {
+				// 보내줄 url을 설정한다.
+				responseData = accountService.setPreUrl(request, responseData);
+			}
 			request.getSession().removeAttribute("preUrl");
 		}catch (Exception e) {
 			// TODO: handle exception
@@ -68,7 +73,7 @@ public class AccountAPI {
 		Map<String, Object> responseData = new HashMap<String, Object>();
 		
 		try {
-			responseData = as.sendEmail(userEmail,responseData);
+			responseData = accountService.sendEmail(userEmail,responseData);
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -83,7 +88,7 @@ public class AccountAPI {
 	public Map<String, Object> changePassword(UserVo uv){
 		Map<String, Object>responseData = new HashMap<String, Object>();
 		try {
-			responseData = as.changePassword(uv,responseData);
+			responseData = accountService.changePassword(uv,responseData);
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

@@ -43,7 +43,6 @@ public class CommonController {
 	// 로그인 페이지
 	@GetMapping("/sign-in")
 	public String signIn(Model model,HttpServletRequest request) {
-		model.addAttribute("headerInfo",request.getHeader("referer"));
 		setPageName(model,"Sign-in");
 		setModelAttribute(model,"account/sign-in", "account/sign-in", "account/sign-in");
 		return "index";
@@ -112,6 +111,14 @@ public class CommonController {
 		return "index";
 	}
 	
+	@GetMapping("/make-class")
+	public String makeMoim(HttpServletRequest request,Model model) {
+		setPageName(model,"모임 만들기");
+		setModelAttribute(model,"makeMoim/makeMoim","moim/makeMoim","moim/makeMoim");
+		return "index";
+	}
+	
+	
 	// 로그아웃
 	@GetMapping("/logout")
 	public String logout(HttpServletRequest request) {
@@ -119,12 +126,13 @@ public class CommonController {
 		return "redirect:/";
 	}
 	
+	
 	// 공통 페이지명 설정
 	private void setPageName(Model model,String pageName) {
 		model.addAttribute("pageName",pageName);
 	}
 	
-	/**contentsPath, cssPath , jsPath*/ 
+	/** 공통 정적자원 경로 */ 
 	private void setModelAttribute (Model model,String contentPath,String cssPath,String jsPath) {
 		model.addAttribute("mainContents",contentPath);
 		model.addAttribute("mainCss",cssPath);

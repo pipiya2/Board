@@ -49,13 +49,14 @@ $("#joinBtn").click(()=>{
 				openOverlay();
 			},
 			success : result =>{
-				console.log("result.ISSUCCESS",result.ISSUCCESS);
 				if(!result.ISSUCCESS){
 					alert(result.ERRORMESSAGE);
 					$("#inputPw").val("");
 					$("#inputEmail").focus();
 				}else{
-					location.href = result.PREURL;
+					console.log(result.PREURL);
+					let prevUrl = result.PREURL != null ? result.PREURL : "/";
+					location.href = prevUrl;
 				}
 			},
 			error : e=>{
