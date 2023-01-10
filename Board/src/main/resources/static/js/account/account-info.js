@@ -19,5 +19,9 @@ let swiper = new Swiper('.swiper', {
 			1000: {
 				slidesPerView: 5
 			}
-		}
+		},
+		pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        }
 });

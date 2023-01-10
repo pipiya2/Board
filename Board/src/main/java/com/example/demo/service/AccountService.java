@@ -61,15 +61,14 @@ public class AccountService {
 			String salt = am.getUserSalt(uv);
 			String password = ss.getEncryptionPw(uv.getPassword(), salt);
 			uv.setPassword(password);
-			int signInCheck = am.signInCheck(uv);
-			if(signInCheck != 1) {
+			uv = am.signInCheck(uv);
+			if(uv == null) {
 				errorMessage = "이메일 혹은 암호를 잘못입력하셨습니다.\n 이메일 혹은 암호를 다시 입력해주세요";
 				isSuccess = false;
 			}else {
-				preUrl = request.getSession().getAttribute("preUrl") == null ? "/" : request.getSession().getAttribute("preUrl").toString();
 				uv = new UserVo(
 						uv.getUserName(),
-						"",
+						uv.getUserBirth(),
 						uv.getUserEmail(),
 						"",
 						"",

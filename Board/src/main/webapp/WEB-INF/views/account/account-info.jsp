@@ -17,9 +17,9 @@
 	<div class="card mb-4">
 	    <div class="card-body">
 	      <h5 class="card-title">내정보</h5>
-	      <p class="card-text">이름 : 강화강</p>
-	      <p class="card-text">이메일 : pipiya2@naver.com</p>
-	      <p class="card-text">생일 : 1997-01-29</p>
+	      <p class="card-text">이름 : ${ logInfo.userName }</p>
+	      <p class="card-text">이메일 : ${ logInfo.userEmail }</p>
+	      <p class="card-text">생일 : ${ logInfo.userBirth }</p>
 	    </div>
 	</div>
 	
@@ -116,6 +116,7 @@
 						</div>
 					</div>
 				</div>
+				<div class="swiper-pagination" style = "position : relative;top : 1px;"></div>
 			</div>
 	    </div>
 	</div>

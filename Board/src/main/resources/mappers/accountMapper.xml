@@ -33,8 +33,12 @@
 		WHERE USER_EMAIL = #{ userEmail }
 	</select>
 	
-	<select id="signInCheck" resultType = "int">
-		SELECT COUNT(*) FROM ACCOUNT_INFO
+	<select id="signInCheck" resultType = "UserVo">
+		SELECT 
+			USER_NAME as userName,
+			USER_BIRTH as userBirth,
+			USER_EMAIL as userEmail
+		FROM ACCOUNT_INFO
 		WHERE USER_EMAIL = #{ userEmail }
 		AND USER_PASSWORD = #{ password } 
 	</select>

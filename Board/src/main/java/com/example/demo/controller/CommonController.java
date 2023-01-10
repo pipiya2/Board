@@ -50,9 +50,10 @@ public class CommonController {
 	
 	// 회원정보 페이지
 	@GetMapping("/account-info")
-	public String accountInfo(Model model) {
+	public String accountInfo(HttpServletRequest request,Model model) {
 		setModelAttribute(model, "account/account-info", "account/account-info", "account/account-info");
 		setPageName(model,"회원정보");
+		model.addAttribute("logInfo",request.getSession().getAttribute("log"));
 		return "index";
 	}
 	
