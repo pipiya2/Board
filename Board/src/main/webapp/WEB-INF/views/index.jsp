@@ -45,6 +45,8 @@
 	<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <script src = "/js/common.js"></script>
 	<script src = "/js/navbar.js"></script>
+	<!-- textarea 자동 늘어남 -->
+	<script src = "https://rawgit.com/jackmoore/autosize/master/dist/autosize.min.js"></script>
 	<script src = "/js/${ mainJs }.js"></script>
 </body>
 </html>

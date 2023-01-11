@@ -2,7 +2,7 @@
 
 <style>
 	.slice-card{
-		height : 80px;
+		/* height : 80px; */
 	}
 	
 	.slice-text{
@@ -39,7 +39,8 @@
 						<div class="card slice-card">
 							<div class="card-body">
 								<h6 class="card-title slice-text">aa</h6>
-								<p class="card-text slice-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+								<div class="card-text slice-text">Some quick example text to build on the card title and make up the bulk of the card's content.</div>
+								<div class="card-text slice-text">Some quick example text to build on the card title and make up the bulk of the card's content.</div>
 							</div>
 						</div>
 					</div>
