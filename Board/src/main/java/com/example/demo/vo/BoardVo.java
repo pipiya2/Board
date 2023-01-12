@@ -7,7 +7,6 @@ public class BoardVo {
 	private String boardNo;
 	private String category;
 	private String userEmail;
-	private String userName;
 	private String subject;
 	private String content;
 	private String viewCnt;

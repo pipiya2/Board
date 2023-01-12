@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
@@ -80,7 +81,7 @@ public class CommonController {
 	@GetMapping("/moim/{pageType}")
 	public String moim(HttpServletRequest request, Model model,@PathVariable String pageType){
 		// 공통 param
-		setModelAttribute(model, "moimFrame/commonFrame", "moim/moim", "moim/moim");
+		setModelAttribute(model, "moim/commonFrame", "moim/moim", "moim/moim");
 		
 		
 		String pageName = "";
@@ -112,10 +113,25 @@ public class CommonController {
 		return "index";
 	}
 	
+	@GetMapping("/moim/post/{moimNo}")
+	public String moimPost(@PathVariable String moimNo,HttpServletRequest request, Model model) {
+		setModelAttribute(model, "moim/post", "moim/post", "moim/post");
+		setPageName(model,"모임글");
+		ArrayList<BoardVo> boardList = null;
+		try {
+			boardList= bs.getBoardList("BOARD_NO", moimNo);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		model.addAttribute("moimList",boardList);
+		return "index";
+	}
+	
 	@GetMapping("/make-class")
 	public String makeMoim(HttpServletRequest request,Model model) {
 		setPageName(model,"모임 만들기");
-		setModelAttribute(model,"makeMoim/makeMoim","moim/makeMoim","moim/makeMoim");
+		setModelAttribute(model,"moim/makeMoim","moim/makeMoim","moim/makeMoim");
 		return "index";
 	}
 	

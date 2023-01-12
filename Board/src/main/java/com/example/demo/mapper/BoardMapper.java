@@ -11,4 +11,6 @@ public interface BoardMapper {
 
 	ArrayList<BoardVo> getBoardList(String column, String data);
 
+	public void registerPost(BoardVo boardVo);
+
 }

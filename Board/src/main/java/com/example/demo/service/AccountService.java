@@ -187,4 +187,9 @@ public class AccountService {
 		responseData.put("PREURL", prevUrl);
 		return responseData;
 	}
+	
+	// 로그인된 회원정보가져오기
+	public Object getLoggedUserInfo(HttpServletRequest request) {
+		return request.getSession().getAttribute("log");
+	}
 }

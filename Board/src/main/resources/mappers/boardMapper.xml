@@ -25,5 +25,11 @@
 	</select>
 	
 	
+	<insert id="registerPost">
+		INSERT INTO BOARD_INFO (BOARD_NO,CATEGORY, USER_EMAIL, SUBJECT, CONTENT)
+		VALUES (#{boardNo}, #{category}, #{userEmail}, #{subject}, #{content})
+	</insert>
+	
+	
 	
 </mapper>
