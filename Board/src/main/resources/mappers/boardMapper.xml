@@ -2,8 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.mapper.BoardMapper">
 
-
-
 	<select id="getBoardList" resultType = "BoardVo">
 		SELECT
 			BOARD_NO AS 'boardNo',
@@ -11,6 +9,7 @@
 			USER_EMAIL AS 'userEmail',
 			SUBJECT  AS 'subject',
 			CONTENT AS 'content',
+			DEADLINE_DATE AS 'deadlineDate',
 			VIEW_CNT AS 'viewCnt',
 			REPLY_CNT AS 'replyCnt',
 			LIKE_CNT AS 'likeCnt',
@@ -22,14 +21,13 @@
 				WHEN (#{column} = 'CATEGORY' AND  #{data} = 'all')  THEN 1 = 1
 				ELSE ${column} = #{data}
 			END
+		ORDER BY CREATE_TIME DESC
 	</select>
 	
 	
 	<insert id="registerPost">
-		INSERT INTO BOARD_INFO (BOARD_NO,CATEGORY, USER_EMAIL, SUBJECT, CONTENT)
-		VALUES (#{boardNo}, #{category}, #{userEmail}, #{subject}, #{content})
+		INSERT INTO BOARD_INFO (BOARD_NO,CATEGORY, USER_EMAIL, SUBJECT, CONTENT,DEADLINE_DATE)
+		VALUES (#{boardNo}, #{category}, #{userEmail}, #{subject}, #{content},#{deadlineDate})
 	</insert>
-	
-	
 	
 </mapper>

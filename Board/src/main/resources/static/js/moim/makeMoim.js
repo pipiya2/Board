@@ -1,5 +1,14 @@
 autosize($("textArea"));
 
+let today = new Date();
+let year = today.getFullYear(); // 년도
+let month = today.getMonth() + 1;  // 월
+let date = today.getDate();  // 날짜
+let day = today.getDay();  // 요일
+
+const dateControl = document.querySelector('input[type="date"]')
+month = month >= 10 ? month : "0" + month; // 1~9 -> 01 ~ 09
+dateControl.min = `${year}-${month}-${date}`;
 
 $("#testBtn").click(()=>{
 	if(!isBlank()){

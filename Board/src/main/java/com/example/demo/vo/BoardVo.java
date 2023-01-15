@@ -9,6 +9,7 @@ public class BoardVo {
 	private String userEmail;
 	private String subject;
 	private String content;
+	private String deadlineDate;
 	private String viewCnt;
 	private String replyCnt;
 	private String likeCnt;
