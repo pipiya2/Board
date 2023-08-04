@@ -144,7 +144,7 @@ public class CommonController {
 	}
 	
 	
-	// 공통 페이지명 설정
+	/** 공통 페이지명 설정 */ 
 	private void setPageName(Model model,String pageName) {
 		model.addAttribute("pageName",pageName);
 	}

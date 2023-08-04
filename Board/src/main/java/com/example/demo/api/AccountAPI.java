@@ -72,6 +72,9 @@ public class AccountAPI {
 	public Map<String, Object> passwordVerify(String userEmail){
 		Map<String, Object> responseData = new HashMap<String, Object>();
 		
+		responseData.put("ISSUCCESS", true);
+		responseData.put("ERRORMESSAGE", "");
+		
 		try {
 			responseData = accountService.sendEmail(userEmail,responseData);
 		} catch (Exception e) {

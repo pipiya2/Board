@@ -104,16 +104,16 @@ public class AccountService {
 		
 		
 		boolean isExistEmail = setFINDPW_TOKEN(userEmail,token) == 1 ? true : false;
+		
 		if(!isExistEmail) {
 			isSuccess = false;
 			errorMessage = "존재하지 않는 이메일 입니다. 이메일을 확인해주세요";
-		}else {
-			ms.sendEmail_CRTFC_NMBR(userEmail,token);
+			responseData.put("ISSUCCESS", isSuccess);
+			responseData.put("ERRORMESSAGE", errorMessage);
+			return responseData;
 		}
 		
-		responseData.put("ISSUCCESS", isSuccess);
-		responseData.put("ERRORMESSAGE", errorMessage);
-		
+		ms.sendEmail_CRTFC_NMBR(userEmail,token);
 		return responseData;
 	}
 
